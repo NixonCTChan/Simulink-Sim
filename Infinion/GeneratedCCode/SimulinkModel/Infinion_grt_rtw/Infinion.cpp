@@ -7,9 +7,9 @@
  *
  * Code generation for model "Infinion".
  *
- * Model version              : 3.11
+ * Model version              : 1.5
  * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Thu Apr 29 17:54:18 2021
+ * C++ source code generated on : Sun May 23 18:54:51 2021
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -422,7 +422,7 @@ real_T rt_roundd_snf(real_T u)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Aileron' */
-FILE * InfinionModelClass::Infinion_fileManager_b(real_T varargin_1)
+FILE * InfinionModelClass::Infinion_fileManager_m(real_T varargin_1)
 {
   FILE * f;
   int8_T fileid;
@@ -452,7 +452,7 @@ void InfinionModelClass::Infinion_fseek(real_T fileID)
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_END;
-  filestar = Infinion_fileManager_b(fileID);
+  filestar = Infinion_fileManager_m(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -468,7 +468,7 @@ real_T InfinionModelClass::Infinion_ftell(real_T fileID)
   FILE * filestar;
   long position_t;
   real_T position;
-  filestar = Infinion_fileManager_b(fileID);
+  filestar = Infinion_fileManager_m(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -484,12 +484,12 @@ real_T InfinionModelClass::Infinion_ftell(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Aileron' */
-void InfinionModelClass::Infinion_fseek_m(real_T fileID)
+void InfinionModelClass::Infinion_fseek_b(real_T fileID)
 {
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_SET;
-  filestar = Infinion_fileManager_b(fileID);
+  filestar = Infinion_fileManager_m(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -723,7 +723,7 @@ void InfinionModelClass::Infinion_fread(real_T fileID, int32_T sizeA,
   }
 
   nBytes = sizeof(char_T);
-  filestar = Infinion_fileManager_b(fileID);
+  filestar = Infinion_fileManager_m(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -992,7 +992,7 @@ void InfinionModelClass::Infinion_readfile(emxArray_char_T_Infinion_T *y)
     i = MAX_int32_T;
   }
 
-  Infinion_fseek_m(f);
+  Infinion_fseek_b(f);
   std::memset(&Infinion_B.buffer[0], 0, sizeof(uint8_T) << 16U);
   remaining = i;
   b_index = 1;
@@ -1333,7 +1333,7 @@ void InfinionModelClass::Infin_emxEnsureCapacity_real_T1
 }
 
 /* Function for MATLAB Function: '<Root>/Read Aileron' */
-void InfinionModelClass::Infinion_char_b(const emxArray_real_T_Infinion_T
+void InfinionModelClass::Infinion_char_j(const emxArray_real_T_Infinion_T
   *varargin_1, emxArray_char_T_Infinion_T *y)
 {
   real_T u;
@@ -1648,7 +1648,7 @@ boolean_T InfinionModelClass::Infinion_copyexponent(emxArray_char_T_Infinion_T
 }
 
 /* Function for MATLAB Function: '<Root>/Read Aileron' */
-void InfinionModelClass::Infinion_skipspaces_k(const emxArray_char_T_Infinion_T *
+void InfinionModelClass::Infinion_skipspaces_d(const emxArray_char_T_Infinion_T *
   s, int32_T *k, int32_T n)
 {
   char_T tmp;
@@ -1702,7 +1702,7 @@ void InfinionModelClass::Infinion_readfloat(emxArray_char_T_Infinion_T *s1,
       if (allowimag) {
         *isimag = true;
         *k = b_k + 1;
-        Infinion_skipspaces_k(s, k, n);
+        Infinion_skipspaces_d(s, k, n);
         if ((*k <= n) && (s->data[*k - 1] == '*')) {
           (*k)++;
           Infinion_readfloat(s1, idx, s, k, n, false, &a__2, b_finite, nfv,
@@ -1730,10 +1730,10 @@ void InfinionModelClass::Infinion_readfloat(emxArray_char_T_Infinion_T *s1,
         *nfv = -*nfv;
       }
 
-      Infinion_skipspaces_k(s, k, n);
+      Infinion_skipspaces_d(s, k, n);
       if ((*k <= n) && (s->data[*k - 1] == '*')) {
         (*k)++;
-        Infinion_skipspaces_k(s, k, n);
+        Infinion_skipspaces_d(s, k, n);
       }
 
       if (*k <= n) {
@@ -1745,7 +1745,7 @@ void InfinionModelClass::Infinion_readfloat(emxArray_char_T_Infinion_T *s1,
       }
     }
 
-    Infinion_skipspaces_k(s, k, n);
+    Infinion_skipspaces_d(s, k, n);
   }
 }
 
@@ -1797,7 +1797,7 @@ creal_T InfinionModelClass::Infinion_str2double(const emxArray_char_T_Infinion_T
     }
 
     Infinion_emxInit_char_T(&s1, 2);
-    Infinion_char_b(tmp, s1);
+    Infinion_char_j(tmp, s1);
     idx = 1;
     k = Infinion_skipspaces(s, s->size[1]);
     Infinion_readfloat(s1, &idx, s, &k, s->size[1], true, &isimag1, &isfinite1,
@@ -1931,7 +1931,7 @@ real_T InfinionModelClass::Infinion_lastStr2double(const
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-int8_T InfinionModelClass::Infinion_filedata_d(void)
+int8_T InfinionModelClass::Infinion_filedata_j(void)
 {
   int32_T k;
   int8_T f;
@@ -1940,7 +1940,7 @@ int8_T InfinionModelClass::Infinion_filedata_d(void)
   k = 1;
   exitg1 = false;
   while ((!exitg1) && (k - 1 < 20)) {
-    if (Infinion_DW.eml_openfiles_m[static_cast<int8_T>(k) - 1] == NULL) {
+    if (Infinion_DW.eml_openfiles_h[static_cast<int8_T>(k) - 1] == NULL) {
       f = static_cast<int8_T>(k);
       exitg1 = true;
     } else {
@@ -1960,11 +1960,11 @@ int8_T InfinionModelClass::Infinion_cfopen_l(const char_T *cfilename, const
   int8_T fileid;
   int8_T j;
   fileid = -1;
-  j = Infinion_filedata_d();
+  j = Infinion_filedata_j();
   if (j >= 1) {
     filestar = fopen(cfilename, cpermission);
     if (filestar != NULL) {
-      Infinion_DW.eml_openfiles_m[j - 1] = filestar;
+      Infinion_DW.eml_openfiles_h[j - 1] = filestar;
       tmp = j + 2;
       if (j + 2 > 127) {
         tmp = 127;
@@ -1978,7 +1978,7 @@ int8_T InfinionModelClass::Infinion_cfopen_l(const char_T *cfilename, const
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-real_T InfinionModelClass::Infinion_fileManager_bt(void)
+real_T InfinionModelClass::Infinion_fileManager_e(void)
 {
   int8_T fileid;
   fileid = Infinion_cfopen_l("ActuatorCommands/elevator.txt", "rb");
@@ -1986,7 +1986,7 @@ real_T InfinionModelClass::Infinion_fileManager_bt(void)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-FILE * InfinionModelClass::Infinion_fileManager_btz(real_T varargin_1)
+FILE * InfinionModelClass::Infinion_fileManager_eh(real_T varargin_1)
 {
   FILE * f;
   int8_T fileid;
@@ -1996,7 +1996,7 @@ FILE * InfinionModelClass::Infinion_fileManager_btz(real_T varargin_1)
   }
 
   if (fileid >= 3) {
-    f = Infinion_DW.eml_openfiles_m[fileid - 3];
+    f = Infinion_DW.eml_openfiles_h[fileid - 3];
   } else if (fileid == 0) {
     f = stdin;
   } else if (fileid == 1) {
@@ -2011,12 +2011,12 @@ FILE * InfinionModelClass::Infinion_fileManager_btz(real_T varargin_1)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-void InfinionModelClass::Infinion_fseek_o(real_T fileID)
+void InfinionModelClass::Infinion_fseek_g(real_T fileID)
 {
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_END;
-  filestar = Infinion_fileManager_btz(fileID);
+  filestar = Infinion_fileManager_eh(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2027,12 +2027,12 @@ void InfinionModelClass::Infinion_fseek_o(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-real_T InfinionModelClass::Infinion_ftell_f(real_T fileID)
+real_T InfinionModelClass::Infinion_ftell_m(real_T fileID)
 {
   FILE * filestar;
   long position_t;
   real_T position;
-  filestar = Infinion_fileManager_btz(fileID);
+  filestar = Infinion_fileManager_eh(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2048,12 +2048,12 @@ real_T InfinionModelClass::Infinion_ftell_f(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-void InfinionModelClass::Infinion_fseek_ox(real_T fileID)
+void InfinionModelClass::Infinion_fseek_g1(real_T fileID)
 {
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_SET;
-  filestar = Infinion_fileManager_btz(fileID);
+  filestar = Infinion_fileManager_eh(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2064,7 +2064,7 @@ void InfinionModelClass::Infinion_fseek_ox(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-void InfinionModelClass::Infinion_fread_e(real_T fileID, int32_T sizeA,
+void InfinionModelClass::Infinion_fread_c(real_T fileID, int32_T sizeA,
   emxArray_real_T_Infinion_T *A, real_T *count)
 {
   FILE * filestar;
@@ -2090,7 +2090,7 @@ void InfinionModelClass::Infinion_fread_e(real_T fileID, int32_T sizeA,
   }
 
   nBytes = sizeof(char_T);
-  filestar = Infinion_fileManager_btz(fileID);
+  filestar = Infinion_fileManager_eh(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2217,7 +2217,7 @@ void InfinionModelClass::Infinion_fread_e(real_T fileID, int32_T sizeA,
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-int32_T InfinionModelClass::Infinion_cfclose_k(real_T fid)
+int32_T InfinionModelClass::Infinion_cfclose_h(real_T fid)
 {
   FILE * f;
   int32_T cst;
@@ -2236,7 +2236,7 @@ int32_T InfinionModelClass::Infinion_cfclose_k(real_T fid)
   }
 
   if (b_fileid >= 3) {
-    f = Infinion_DW.eml_openfiles_m[b_fileid - 3];
+    f = Infinion_DW.eml_openfiles_h[b_fileid - 3];
   } else if (b_fileid == 0) {
     f = stdin;
   } else if (b_fileid == 1) {
@@ -2251,7 +2251,7 @@ int32_T InfinionModelClass::Infinion_cfclose_k(real_T fid)
     cst = fclose(f);
     if (cst == 0) {
       st = 0;
-      Infinion_DW.eml_openfiles_m[fileid - 3] = NULL;
+      Infinion_DW.eml_openfiles_h[fileid - 3] = NULL;
     }
   }
 
@@ -2259,7 +2259,7 @@ int32_T InfinionModelClass::Infinion_cfclose_k(real_T fid)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Elevator' */
-void InfinionModelClass::Infinion_readfile_n(emxArray_char_T_Infinion_T *y)
+void InfinionModelClass::Infinion_readfile_o(emxArray_char_T_Infinion_T *y)
 {
   emxArray_real_T_Infinion_T *dataRead;
   emxArray_uint8_T_Infinion_T *buffer;
@@ -2273,9 +2273,9 @@ void InfinionModelClass::Infinion_readfile_n(emxArray_char_T_Infinion_T *y)
   int32_T remaining;
   int32_T tmp_0;
   boolean_T exitg1;
-  f = Infinion_fileManager_bt();
-  Infinion_fseek_o(f);
-  tmp = rt_roundd_snf(Infinion_ftell_f(f));
+  f = Infinion_fileManager_e();
+  Infinion_fseek_g(f);
+  tmp = rt_roundd_snf(Infinion_ftell_m(f));
   if (tmp < 2.147483648E+9) {
     if (tmp >= -2.147483648E+9) {
       i = static_cast<int32_T>(tmp);
@@ -2286,7 +2286,7 @@ void InfinionModelClass::Infinion_readfile_n(emxArray_char_T_Infinion_T *y)
     i = MAX_int32_T;
   }
 
-  Infinion_fseek_ox(f);
+  Infinion_fseek_g1(f);
   std::memset(&Infinion_B.buffer_m[0], 0, sizeof(uint8_T) << 16U);
   remaining = i;
   b_index = 1;
@@ -2307,7 +2307,7 @@ void InfinionModelClass::Infinion_readfile_n(emxArray_char_T_Infinion_T *y)
       fflush(stdout);
       exitg1 = true;
     } else {
-      Infinion_fread_e(f, remaining, dataRead, &nread);
+      Infinion_fread_c(f, remaining, dataRead, &nread);
       tmp = rt_roundd_snf(static_cast<real_T>(b_index) + nread);
       if (tmp < 2.147483648E+9) {
         if (tmp >= -2.147483648E+9) {
@@ -2378,7 +2378,7 @@ void InfinionModelClass::Infinion_readfile_n(emxArray_char_T_Infinion_T *y)
 
   Infinion_emxFree_real_T(&dataRead);
   Infinion_emxInit_uint8_T(&buffer, 2);
-  Infinion_cfclose_k(f);
+  Infinion_cfclose_h(f);
   i = buffer->size[0] * buffer->size[1];
   buffer->size[0] = 1;
   buffer->size[1] = b_index;
@@ -2392,7 +2392,7 @@ void InfinionModelClass::Infinion_readfile_n(emxArray_char_T_Infinion_T *y)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-int8_T InfinionModelClass::Infinion_filedata_c(void)
+int8_T InfinionModelClass::Infinion_filedata_p(void)
 {
   int32_T k;
   int8_T f;
@@ -2401,7 +2401,7 @@ int8_T InfinionModelClass::Infinion_filedata_c(void)
   k = 1;
   exitg1 = false;
   while ((!exitg1) && (k - 1 < 20)) {
-    if (Infinion_DW.eml_openfiles_o[static_cast<int8_T>(k) - 1] == NULL) {
+    if (Infinion_DW.eml_openfiles_j[static_cast<int8_T>(k) - 1] == NULL) {
       f = static_cast<int8_T>(k);
       exitg1 = true;
     } else {
@@ -2421,11 +2421,11 @@ int8_T InfinionModelClass::Infinion_cfopen_b(const char_T *cfilename, const
   int8_T fileid;
   int8_T j;
   fileid = -1;
-  j = Infinion_filedata_c();
+  j = Infinion_filedata_p();
   if (j >= 1) {
     filestar = fopen(cfilename, cpermission);
     if (filestar != NULL) {
-      Infinion_DW.eml_openfiles_o[j - 1] = filestar;
+      Infinion_DW.eml_openfiles_j[j - 1] = filestar;
       tmp = j + 2;
       if (j + 2 > 127) {
         tmp = 127;
@@ -2439,7 +2439,7 @@ int8_T InfinionModelClass::Infinion_cfopen_b(const char_T *cfilename, const
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-real_T InfinionModelClass::Infinion_fileManager_p(void)
+real_T InfinionModelClass::Infinion_fileManager_l(void)
 {
   int8_T fileid;
   fileid = Infinion_cfopen_b("ActuatorCommands/rudder.txt", "rb");
@@ -2447,7 +2447,7 @@ real_T InfinionModelClass::Infinion_fileManager_p(void)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-FILE * InfinionModelClass::Infinion_fileManager_pw(real_T varargin_1)
+FILE * InfinionModelClass::Infinion_fileManager_lt(real_T varargin_1)
 {
   FILE * f;
   int8_T fileid;
@@ -2457,7 +2457,7 @@ FILE * InfinionModelClass::Infinion_fileManager_pw(real_T varargin_1)
   }
 
   if (fileid >= 3) {
-    f = Infinion_DW.eml_openfiles_o[fileid - 3];
+    f = Infinion_DW.eml_openfiles_j[fileid - 3];
   } else if (fileid == 0) {
     f = stdin;
   } else if (fileid == 1) {
@@ -2472,12 +2472,12 @@ FILE * InfinionModelClass::Infinion_fileManager_pw(real_T varargin_1)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-void InfinionModelClass::Infinion_fseek_k(real_T fileID)
+void InfinionModelClass::Infinion_fseek_n(real_T fileID)
 {
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_END;
-  filestar = Infinion_fileManager_pw(fileID);
+  filestar = Infinion_fileManager_lt(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2488,12 +2488,12 @@ void InfinionModelClass::Infinion_fseek_k(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-real_T InfinionModelClass::Infinion_ftell_i(real_T fileID)
+real_T InfinionModelClass::Infinion_ftell_e(real_T fileID)
 {
   FILE * filestar;
   long position_t;
   real_T position;
-  filestar = Infinion_fileManager_pw(fileID);
+  filestar = Infinion_fileManager_lt(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2509,12 +2509,12 @@ real_T InfinionModelClass::Infinion_ftell_i(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-void InfinionModelClass::Infinion_fseek_kz(real_T fileID)
+void InfinionModelClass::Infinion_fseek_nn(real_T fileID)
 {
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_SET;
-  filestar = Infinion_fileManager_pw(fileID);
+  filestar = Infinion_fileManager_lt(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2525,7 +2525,7 @@ void InfinionModelClass::Infinion_fseek_kz(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-void InfinionModelClass::Infinion_fread_g(real_T fileID, int32_T sizeA,
+void InfinionModelClass::Infinion_fread_l(real_T fileID, int32_T sizeA,
   emxArray_real_T_Infinion_T *A, real_T *count)
 {
   FILE * filestar;
@@ -2551,7 +2551,7 @@ void InfinionModelClass::Infinion_fread_g(real_T fileID, int32_T sizeA,
   }
 
   nBytes = sizeof(char_T);
-  filestar = Infinion_fileManager_pw(fileID);
+  filestar = Infinion_fileManager_lt(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -2678,7 +2678,7 @@ void InfinionModelClass::Infinion_fread_g(real_T fileID, int32_T sizeA,
 }
 
 /* Function for MATLAB Function: '<Root>/Read Rudder' */
-int32_T InfinionModelClass::Infinion_cfclose_h(real_T fid)
+int32_T InfinionModelClass::Infinion_cfclose_g(real_T fid)
 {
   FILE * f;
   int32_T cst;
@@ -2697,7 +2697,7 @@ int32_T InfinionModelClass::Infinion_cfclose_h(real_T fid)
   }
 
   if (b_fileid >= 3) {
-    f = Infinion_DW.eml_openfiles_o[b_fileid - 3];
+    f = Infinion_DW.eml_openfiles_j[b_fileid - 3];
   } else if (b_fileid == 0) {
     f = stdin;
   } else if (b_fileid == 1) {
@@ -2712,7 +2712,7 @@ int32_T InfinionModelClass::Infinion_cfclose_h(real_T fid)
     cst = fclose(f);
     if (cst == 0) {
       st = 0;
-      Infinion_DW.eml_openfiles_o[fileid - 3] = NULL;
+      Infinion_DW.eml_openfiles_j[fileid - 3] = NULL;
     }
   }
 
@@ -2734,9 +2734,9 @@ void InfinionModelClass::Infinion_readfile_a(emxArray_char_T_Infinion_T *y)
   int32_T remaining;
   int32_T tmp_0;
   boolean_T exitg1;
-  f = Infinion_fileManager_p();
-  Infinion_fseek_k(f);
-  tmp = rt_roundd_snf(Infinion_ftell_i(f));
+  f = Infinion_fileManager_l();
+  Infinion_fseek_n(f);
+  tmp = rt_roundd_snf(Infinion_ftell_e(f));
   if (tmp < 2.147483648E+9) {
     if (tmp >= -2.147483648E+9) {
       i = static_cast<int32_T>(tmp);
@@ -2747,7 +2747,7 @@ void InfinionModelClass::Infinion_readfile_a(emxArray_char_T_Infinion_T *y)
     i = MAX_int32_T;
   }
 
-  Infinion_fseek_kz(f);
+  Infinion_fseek_nn(f);
   std::memset(&Infinion_B.buffer_c[0], 0, sizeof(uint8_T) << 16U);
   remaining = i;
   b_index = 1;
@@ -2768,7 +2768,7 @@ void InfinionModelClass::Infinion_readfile_a(emxArray_char_T_Infinion_T *y)
       fflush(stdout);
       exitg1 = true;
     } else {
-      Infinion_fread_g(f, remaining, dataRead, &nread);
+      Infinion_fread_l(f, remaining, dataRead, &nread);
       tmp = rt_roundd_snf(static_cast<real_T>(b_index) + nread);
       if (tmp < 2.147483648E+9) {
         if (tmp >= -2.147483648E+9) {
@@ -2839,7 +2839,7 @@ void InfinionModelClass::Infinion_readfile_a(emxArray_char_T_Infinion_T *y)
 
   Infinion_emxFree_real_T(&dataRead);
   Infinion_emxInit_uint8_T(&buffer, 2);
-  Infinion_cfclose_h(f);
+  Infinion_cfclose_g(f);
   i = buffer->size[0] * buffer->size[1];
   buffer->size[0] = 1;
   buffer->size[1] = b_index;
@@ -2906,7 +2906,7 @@ void rt_mrdivide_U1d1x3_U2d_9vOrDY9Z(const real_T u0[3], const real_T u1[9],
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-int8_T InfinionModelClass::Infinion_filedata_k(void)
+int8_T InfinionModelClass::Infinion_filedata_d(void)
 {
   int32_T k;
   int8_T f;
@@ -2915,7 +2915,7 @@ int8_T InfinionModelClass::Infinion_filedata_k(void)
   k = 1;
   exitg1 = false;
   while ((!exitg1) && (k - 1 < 20)) {
-    if (Infinion_DW.eml_openfiles_h[static_cast<int8_T>(k) - 1] == NULL) {
+    if (Infinion_DW.eml_openfiles_p[static_cast<int8_T>(k) - 1] == NULL) {
       f = static_cast<int8_T>(k);
       exitg1 = true;
     } else {
@@ -2927,7 +2927,7 @@ int8_T InfinionModelClass::Infinion_filedata_k(void)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-int8_T InfinionModelClass::Infinion_cfopen_k(const char_T *cfilename, const
+int8_T InfinionModelClass::Infinion_cfopen_l0(const char_T *cfilename, const
   char_T *cpermission)
 {
   FILE * filestar;
@@ -2935,11 +2935,11 @@ int8_T InfinionModelClass::Infinion_cfopen_k(const char_T *cfilename, const
   int8_T fileid;
   int8_T j;
   fileid = -1;
-  j = Infinion_filedata_k();
+  j = Infinion_filedata_d();
   if (j >= 1) {
     filestar = fopen(cfilename, cpermission);
     if (filestar != NULL) {
-      Infinion_DW.eml_openfiles_h[j - 1] = filestar;
+      Infinion_DW.eml_openfiles_p[j - 1] = filestar;
       tmp = j + 2;
       if (j + 2 > 127) {
         tmp = 127;
@@ -2953,15 +2953,15 @@ int8_T InfinionModelClass::Infinion_cfopen_k(const char_T *cfilename, const
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-real_T InfinionModelClass::Infinion_fileManager_e(void)
+real_T InfinionModelClass::Infinion_fileManager_i(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_k("ActuatorCommands/throttle.txt", "rb");
+  fileid = Infinion_cfopen_l0("ActuatorCommands/throttle.txt", "rb");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-FILE * InfinionModelClass::Infinion_fileManager_e4(real_T varargin_1)
+FILE * InfinionModelClass::Infinion_fileManager_iw(real_T varargin_1)
 {
   FILE * f;
   int8_T fileid;
@@ -2971,7 +2971,7 @@ FILE * InfinionModelClass::Infinion_fileManager_e4(real_T varargin_1)
   }
 
   if (fileid >= 3) {
-    f = Infinion_DW.eml_openfiles_h[fileid - 3];
+    f = Infinion_DW.eml_openfiles_p[fileid - 3];
   } else if (fileid == 0) {
     f = stdin;
   } else if (fileid == 1) {
@@ -2986,12 +2986,12 @@ FILE * InfinionModelClass::Infinion_fileManager_e4(real_T varargin_1)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-void InfinionModelClass::Infinion_fseek_c(real_T fileID)
+void InfinionModelClass::Infinion_fseek_i(real_T fileID)
 {
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_END;
-  filestar = Infinion_fileManager_e4(fileID);
+  filestar = Infinion_fileManager_iw(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -3002,12 +3002,12 @@ void InfinionModelClass::Infinion_fseek_c(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-real_T InfinionModelClass::Infinion_ftell_b(real_T fileID)
+real_T InfinionModelClass::Infinion_ftell_c(real_T fileID)
 {
   FILE * filestar;
   long position_t;
   real_T position;
-  filestar = Infinion_fileManager_e4(fileID);
+  filestar = Infinion_fileManager_iw(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -3023,12 +3023,12 @@ real_T InfinionModelClass::Infinion_ftell_b(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-void InfinionModelClass::Infinion_fseek_cn(real_T fileID)
+void InfinionModelClass::Infinion_fseek_i2(real_T fileID)
 {
   FILE * filestar;
   int wherefrom;
   wherefrom = SEEK_SET;
-  filestar = Infinion_fileManager_e4(fileID);
+  filestar = Infinion_fileManager_iw(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -3039,7 +3039,7 @@ void InfinionModelClass::Infinion_fseek_cn(real_T fileID)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-void InfinionModelClass::Infinion_fread_j(real_T fileID, int32_T sizeA,
+void InfinionModelClass::Infinion_fread_e(real_T fileID, int32_T sizeA,
   emxArray_real_T_Infinion_T *A, real_T *count)
 {
   FILE * filestar;
@@ -3065,7 +3065,7 @@ void InfinionModelClass::Infinion_fread_j(real_T fileID, int32_T sizeA,
   }
 
   nBytes = sizeof(char_T);
-  filestar = Infinion_fileManager_e4(fileID);
+  filestar = Infinion_fileManager_iw(fileID);
   if ((!(fileID != 0.0)) || (!(fileID != 1.0)) || (!(fileID != 2.0))) {
     filestar = NULL;
   }
@@ -3192,7 +3192,7 @@ void InfinionModelClass::Infinion_fread_j(real_T fileID, int32_T sizeA,
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-int32_T InfinionModelClass::Infinion_cfclose_i(real_T fid)
+int32_T InfinionModelClass::Infinion_cfclose_e(real_T fid)
 {
   FILE * f;
   int32_T cst;
@@ -3211,7 +3211,7 @@ int32_T InfinionModelClass::Infinion_cfclose_i(real_T fid)
   }
 
   if (b_fileid >= 3) {
-    f = Infinion_DW.eml_openfiles_h[b_fileid - 3];
+    f = Infinion_DW.eml_openfiles_p[b_fileid - 3];
   } else if (b_fileid == 0) {
     f = stdin;
   } else if (b_fileid == 1) {
@@ -3226,7 +3226,7 @@ int32_T InfinionModelClass::Infinion_cfclose_i(real_T fid)
     cst = fclose(f);
     if (cst == 0) {
       st = 0;
-      Infinion_DW.eml_openfiles_h[fileid - 3] = NULL;
+      Infinion_DW.eml_openfiles_p[fileid - 3] = NULL;
     }
   }
 
@@ -3234,7 +3234,7 @@ int32_T InfinionModelClass::Infinion_cfclose_i(real_T fid)
 }
 
 /* Function for MATLAB Function: '<Root>/Read Throttle' */
-void InfinionModelClass::Infinion_readfile_e(emxArray_char_T_Infinion_T *y)
+void InfinionModelClass::Infinion_readfile_c(emxArray_char_T_Infinion_T *y)
 {
   emxArray_real_T_Infinion_T *dataRead;
   emxArray_uint8_T_Infinion_T *buffer;
@@ -3248,9 +3248,9 @@ void InfinionModelClass::Infinion_readfile_e(emxArray_char_T_Infinion_T *y)
   int32_T remaining;
   int32_T tmp_0;
   boolean_T exitg1;
-  f = Infinion_fileManager_e();
-  Infinion_fseek_c(f);
-  tmp = rt_roundd_snf(Infinion_ftell_b(f));
+  f = Infinion_fileManager_i();
+  Infinion_fseek_i(f);
+  tmp = rt_roundd_snf(Infinion_ftell_c(f));
   if (tmp < 2.147483648E+9) {
     if (tmp >= -2.147483648E+9) {
       i = static_cast<int32_T>(tmp);
@@ -3261,7 +3261,7 @@ void InfinionModelClass::Infinion_readfile_e(emxArray_char_T_Infinion_T *y)
     i = MAX_int32_T;
   }
 
-  Infinion_fseek_cn(f);
+  Infinion_fseek_i2(f);
   std::memset(&Infinion_B.buffer_k[0], 0, sizeof(uint8_T) << 16U);
   remaining = i;
   b_index = 1;
@@ -3282,7 +3282,7 @@ void InfinionModelClass::Infinion_readfile_e(emxArray_char_T_Infinion_T *y)
       fflush(stdout);
       exitg1 = true;
     } else {
-      Infinion_fread_j(f, remaining, dataRead, &nread);
+      Infinion_fread_e(f, remaining, dataRead, &nread);
       tmp = rt_roundd_snf(static_cast<real_T>(b_index) + nread);
       if (tmp < 2.147483648E+9) {
         if (tmp >= -2.147483648E+9) {
@@ -3353,7 +3353,7 @@ void InfinionModelClass::Infinion_readfile_e(emxArray_char_T_Infinion_T *y)
 
   Infinion_emxFree_real_T(&dataRead);
   Infinion_emxInit_uint8_T(&buffer, 2);
-  Infinion_cfclose_i(f);
+  Infinion_cfclose_e(f);
   i = buffer->size[0] * buffer->size[1];
   buffer->size[0] = 1;
   buffer->size[1] = b_index;
@@ -3367,7 +3367,7 @@ void InfinionModelClass::Infinion_readfile_e(emxArray_char_T_Infinion_T *y)
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-int8_T InfinionModelClass::Infinion_filedata_m(void)
+int8_T InfinionModelClass::Infinion_filedata_l(void)
 {
   int32_T k;
   int8_T f;
@@ -3376,7 +3376,7 @@ int8_T InfinionModelClass::Infinion_filedata_m(void)
   k = 1;
   exitg1 = false;
   while ((!exitg1) && (k - 1 < 20)) {
-    if (Infinion_DW.eml_openfiles_i[static_cast<int8_T>(k) - 1] == NULL) {
+    if (Infinion_DW.eml_openfiles_b[static_cast<int8_T>(k) - 1] == NULL) {
       f = static_cast<int8_T>(k);
       exitg1 = true;
     } else {
@@ -3388,7 +3388,7 @@ int8_T InfinionModelClass::Infinion_filedata_m(void)
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-int8_T InfinionModelClass::Infinion_cfopen_n(const char_T *cfilename, const
+int8_T InfinionModelClass::Infinion_cfopen_o(const char_T *cfilename, const
   char_T *cpermission)
 {
   FILE * filestar;
@@ -3396,11 +3396,11 @@ int8_T InfinionModelClass::Infinion_cfopen_n(const char_T *cfilename, const
   int8_T fileid;
   int8_T j;
   fileid = -1;
-  j = Infinion_filedata_m();
+  j = Infinion_filedata_l();
   if (j >= 1) {
     filestar = fopen(cfilename, cpermission);
     if (filestar != NULL) {
-      Infinion_DW.eml_openfiles_i[j - 1] = filestar;
+      Infinion_DW.eml_openfiles_b[j - 1] = filestar;
       Infinion_DW.eml_autoflush[j - 1] = true;
       tmp = j + 2;
       if (j + 2 > 127) {
@@ -3415,146 +3415,130 @@ int8_T InfinionModelClass::Infinion_cfopen_n(const char_T *cfilename, const
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_n(void)
+real_T InfinionModelClass::Infinion_fileManager_a(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/airspeed.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/airspeed.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nv(void)
+real_T InfinionModelClass::Infinion_fileManager_am(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/angleOfAttack.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/angleOfAttack.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg(void)
+real_T InfinionModelClass::Infinion_fileManager_amm(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/track.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/track.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg1(void)
+real_T InfinionModelClass::Infinion_fileManager_ammc(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/latitudeSpeed.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/latitudeSpeed.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg1z(void)
+real_T InfinionModelClass::Infinion_fileManager_ammcx(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/longitudeSpeed.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/longitudeSpeed.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg1zl(void)
+real_T InfinionModelClass::Infinion_fileManager_ammcxi(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/rateOfClimb.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/rateOfClimb.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg1zlk(void)
+real_T InfinionModelClass::Infinion_fileManager_ammcxic(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/latitude.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/latitude.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg1zlk2(void)
+real_T InfinionModelClass::Infinion_fileManager_ammcxic4(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/longitude.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/longitude.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg1zlk2m(void)
+real_T InfinionModelClass::Infinion_fileManager_ammcxic4h(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/altitude.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/altitude.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinion_fileManager_nvg1zlk2mj(void)
+real_T InfinionModelClass::Infinion_fileManager_ammcxic4hu(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/roll.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/roll.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infinio_fileManager_nvg1zlk2mjw(void)
+real_T InfinionModelClass::Infinio_fileManager_ammcxic4hub(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/pitch.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/pitch.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infini_fileManager_nvg1zlk2mjw5(void)
+real_T InfinionModelClass::Infini_fileManager_ammcxic4hubq(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/yaw.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/yaw.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infin_fileManager_nvg1zlk2mjw5f(void)
+real_T InfinionModelClass::Infin_fileManager_ammcxic4hubq4(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/rollRate.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/rollRate.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Infi_fileManager_nvg1zlk2mjw5fc(void)
+real_T InfinionModelClass::Infi_fileManager_ammcxic4hubq4o(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/pitchRate.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/pitchRate.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Inf_fileManager_nvg1zlk2mjw5fch(void)
+real_T InfinionModelClass::Inf_fileManager_ammcxic4hubq4oy(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/yawRate.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/yawRate.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Inf_fileManager_k(void)
+real_T InfinionModelClass::Inf_fileManager_a(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/accX.txt", "ab");
-  return fileid;
-}
-
-/* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Inf_fileManager_e(void)
-{
-  int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/accY.txt", "ab");
-  return fileid;
-}
-
-/* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Inf_fileManager_f(void)
-{
-  int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/accZ.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/accX.txt", "ab");
   return fileid;
 }
 
@@ -3562,28 +3546,44 @@ real_T InfinionModelClass::Inf_fileManager_f(void)
 real_T InfinionModelClass::Inf_fileManager_o(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/gyrX.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/accY.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Inf_fileManager_oy(void)
+real_T InfinionModelClass::Inf_fileManager_j(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/gyrY.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/accZ.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-real_T InfinionModelClass::Inf_fileManager_p(void)
+real_T InfinionModelClass::Inf_fileManager_m(void)
 {
   int8_T fileid;
-  fileid = Infinion_cfopen_n("SensorOutputs/gyrZ.txt", "ab");
+  fileid = Infinion_cfopen_o("SensorOutputs/gyrX.txt", "ab");
   return fileid;
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-void InfinionModelClass::Inf_fileManager_n(real_T varargin_1, FILE * *f,
+real_T InfinionModelClass::Inf_fileManager_b(void)
+{
+  int8_T fileid;
+  fileid = Infinion_cfopen_o("SensorOutputs/gyrY.txt", "ab");
+  return fileid;
+}
+
+/* Function for MATLAB Function: '<Root>/WriteToFile' */
+real_T InfinionModelClass::Inf_fileManager_f(void)
+{
+  int8_T fileid;
+  fileid = Infinion_cfopen_o("SensorOutputs/gyrZ.txt", "ab");
+  return fileid;
+}
+
+/* Function for MATLAB Function: '<Root>/WriteToFile' */
+void InfinionModelClass::Inf_fileManager_l(real_T varargin_1, FILE * *f,
   boolean_T *a)
 {
   int8_T fileid;
@@ -3593,7 +3593,7 @@ void InfinionModelClass::Inf_fileManager_n(real_T varargin_1, FILE * *f,
   }
 
   if (fileid >= 3) {
-    *f = Infinion_DW.eml_openfiles_i[fileid - 3];
+    *f = Infinion_DW.eml_openfiles_b[fileid - 3];
     *a = Infinion_DW.eml_autoflush[fileid - 3];
   } else if (fileid == 0) {
     *f = stdin;
@@ -3611,17 +3611,17 @@ void InfinionModelClass::Inf_fileManager_n(real_T varargin_1, FILE * *f,
 }
 
 /* Function for MATLAB Function: '<Root>/WriteToFile' */
-int32_T InfinionModelClass::Inf_fileManager_el(void)
+int32_T InfinionModelClass::Inf_fileManager_bl(void)
 {
   int32_T cst;
   int32_T f;
   int32_T j;
   f = 0;
   for (j = 0; j < 20; j++) {
-    if (Infinion_DW.eml_openfiles_i[j] != NULL) {
-      cst = fclose(Infinion_DW.eml_openfiles_i[j]);
+    if (Infinion_DW.eml_openfiles_b[j] != NULL) {
+      cst = fclose(Infinion_DW.eml_openfiles_b[j]);
       if (cst == 0) {
-        Infinion_DW.eml_openfiles_i[j] = NULL;
+        Infinion_DW.eml_openfiles_b[j] = NULL;
         Infinion_DW.eml_autoflush[j] = true;
       } else {
         f = -1;
@@ -3669,11 +3669,11 @@ void InfinionModelClass::step()
   real_T pitchRateFile;
   real_T rollFile;
   real_T rollRateFile;
-  real_T rtb_Abs1;
   real_T rtb_Sum_d_idx_0_tmp;
   real_T rtb_Sum_d_idx_1;
   real_T rtb_Sum_f_idx_0;
   real_T rtb_Sum_f_idx_1;
+  real_T rtb_Switch;
   real_T rtb_UnitConversion_a;
   real_T rtb_ixk;
   real_T rtb_jxi;
@@ -3798,34 +3798,34 @@ void InfinionModelClass::step()
      */
     if (std::abs(Infinion_P.FlatEarthtoLLA_LL0[0]) >
         Infinion_P.CompareToConstant_const) {
-      rtb_Sum_f_idx_0 = rt_modd_snf(Infinion_P.FlatEarthtoLLA_LL0[0] +
+      rtb_Switch = rt_modd_snf(Infinion_P.FlatEarthtoLLA_LL0[0] +
         Infinion_P.Bias_Bias_o, Infinion_P.Constant2_Value) +
         Infinion_P.Bias1_Bias_jw;
     } else {
-      rtb_Sum_f_idx_0 = Infinion_P.FlatEarthtoLLA_LL0[0];
+      rtb_Switch = Infinion_P.FlatEarthtoLLA_LL0[0];
     }
 
     /* End of Switch: '<S114>/Switch' */
 
     /* Abs: '<S111>/Abs1' */
-    rtb_Abs1 = std::abs(rtb_Sum_f_idx_0);
+    rtb_Sum_f_idx_0 = std::abs(rtb_Switch);
 
     /* RelationalOperator: '<S113>/Compare' incorporates:
      *  Constant: '<S113>/Constant'
      */
-    rtb_Compare_f = (rtb_Abs1 > Infinion_P.CompareToConstant_const_n);
+    rtb_Compare_f = (rtb_Sum_f_idx_0 > Infinion_P.CompareToConstant_const_n);
 
     /* Switch: '<S111>/Switch' */
     if (rtb_Compare_f) {
       /* Signum: '<S111>/Sign1' */
-      if (rtb_Sum_f_idx_0 < 0.0) {
-        rtb_Sum_f_idx_0 = -1.0;
-      } else if (rtb_Sum_f_idx_0 > 0.0) {
-        rtb_Sum_f_idx_0 = 1.0;
-      } else if (rtb_Sum_f_idx_0 == 0.0) {
-        rtb_Sum_f_idx_0 = 0.0;
+      if (rtb_Switch < 0.0) {
+        rtb_Switch = -1.0;
+      } else if (rtb_Switch > 0.0) {
+        rtb_Switch = 1.0;
+      } else if (rtb_Switch == 0.0) {
+        rtb_Switch = 0.0;
       } else {
-        rtb_Sum_f_idx_0 = (rtNaN);
+        rtb_Switch = (rtNaN);
       }
 
       /* End of Signum: '<S111>/Sign1' */
@@ -3836,12 +3836,12 @@ void InfinionModelClass::step()
        *  Gain: '<S111>/Gain'
        *  Product: '<S111>/Divide1'
        */
-      Infinion_B.Switch = ((rtb_Abs1 + Infinion_P.Bias_Bias_n) *
+      Infinion_B.Switch = ((rtb_Sum_f_idx_0 + Infinion_P.Bias_Bias_n) *
                            Infinion_P.Gain_Gain_g + Infinion_P.Bias1_Bias_a) *
-        rtb_Sum_f_idx_0;
+        rtb_Switch;
     } else {
       /* Switch: '<S111>/Switch' */
-      Infinion_B.Switch = rtb_Sum_f_idx_0;
+      Infinion_B.Switch = rtb_Switch;
     }
 
     /* End of Switch: '<S111>/Switch' */
@@ -3849,10 +3849,10 @@ void InfinionModelClass::step()
     /* UnitConversion: '<S119>/Unit Conversion' */
     /* Unit Conversion - from: deg to: rad
        Expression: output = (0.0174533*input) + (0) */
-    rtb_Sum_f_idx_0 = 0.017453292519943295 * Infinion_B.Switch;
+    rtb_Switch = 0.017453292519943295 * Infinion_B.Switch;
 
     /* Trigonometry: '<S120>/Trigonometric Function1' */
-    rtb_Abs1 = std::sin(rtb_Sum_f_idx_0);
+    rtb_Sum_f_idx_0 = std::sin(rtb_Switch);
 
     /* Product: '<S120>/Product1' incorporates:
      *  Product: '<S117>/Product2'
@@ -3863,13 +3863,15 @@ void InfinionModelClass::step()
      *  Constant: '<S120>/Constant'
      *  Product: '<S120>/Product1'
      */
-    rtb_Abs1 = Infinion_P.Constant_Value_l - rtb_sqrt * rtb_Abs1 * rtb_Abs1;
+    rtb_Sum_f_idx_0 = Infinion_P.Constant_Value_l - rtb_sqrt * rtb_Sum_f_idx_0 *
+      rtb_Sum_f_idx_0;
 
     /* Product: '<S117>/Product1' incorporates:
      *  Constant: '<S117>/Constant1'
      *  Sqrt: '<S117>/sqrt'
      */
-    rtb_UnitConversion_a = Infinion_P.Constant1_Value_k / std::sqrt(rtb_Abs1);
+    rtb_UnitConversion_a = Infinion_P.Constant1_Value_k / std::sqrt
+      (rtb_Sum_f_idx_0);
 
     /* Trigonometry: '<S117>/Trigonometric Function1' incorporates:
      *  Constant: '<S117>/Constant'
@@ -3879,7 +3881,7 @@ void InfinionModelClass::step()
      */
     Infinion_B.TrigonometricFunction1 = rt_atan2d_snf
       (Infinion_P.Constant2_Value_d, (Infinion_P.Constant_Value_h - rtb_sqrt) *
-       rtb_UnitConversion_a / rtb_Abs1);
+       rtb_UnitConversion_a / rtb_Sum_f_idx_0);
 
     /* Trigonometry: '<S117>/Trigonometric Function2' incorporates:
      *  Constant: '<S117>/Constant3'
@@ -3887,16 +3889,16 @@ void InfinionModelClass::step()
      *  Trigonometry: '<S117>/Trigonometric Function'
      */
     Infinion_B.TrigonometricFunction2 = rt_atan2d_snf(Infinion_P.Constant3_Value,
-      rtb_UnitConversion_a * std::cos(rtb_Sum_f_idx_0));
+      rtb_UnitConversion_a * std::cos(rtb_Switch));
 
     /* Switch: '<S102>/Switch1' incorporates:
      *  Constant: '<S102>/Constant'
      *  Constant: '<S102>/Constant1'
      */
     if (rtb_Compare_f) {
-      rtb_Abs1 = Infinion_P.Constant_Value;
+      rtb_Switch = Infinion_P.Constant_Value;
     } else {
-      rtb_Abs1 = Infinion_P.Constant1_Value;
+      rtb_Switch = Infinion_P.Constant1_Value;
     }
 
     /* End of Switch: '<S102>/Switch1' */
@@ -3904,7 +3906,7 @@ void InfinionModelClass::step()
     /* Sum: '<S102>/Sum' incorporates:
      *  Constant: '<S7>/ref_position'
      */
-    rtb_sqrt = rtb_Abs1 + Infinion_P.FlatEarthtoLLA_LL0[1];
+    rtb_sqrt = rtb_Switch + Infinion_P.FlatEarthtoLLA_LL0[1];
 
     /* Switch: '<S112>/Switch' incorporates:
      *  Abs: '<S112>/Abs'
@@ -3975,21 +3977,21 @@ void InfinionModelClass::step()
   if (rtb_sqrt > Infinion_P.CompareToConstant_const_p) {
     /* Signum: '<S105>/Sign1' */
     if (rtb_Sum_f_idx_0 < 0.0) {
-      rtb_Sum_f_idx_0 = -1.0;
+      rtb_Switch = -1.0;
     } else if (rtb_Sum_f_idx_0 > 0.0) {
-      rtb_Sum_f_idx_0 = 1.0;
+      rtb_Switch = 1.0;
     } else if (rtb_Sum_f_idx_0 == 0.0) {
-      rtb_Sum_f_idx_0 = 0.0;
+      rtb_Switch = 0.0;
     } else {
-      rtb_Sum_f_idx_0 = (rtNaN);
+      rtb_Switch = (rtNaN);
     }
 
     /* End of Signum: '<S105>/Sign1' */
-    rtb_Sum_f_idx_0 *= (rtb_sqrt + Infinion_P.Bias_Bias) * Infinion_P.Gain_Gain
-      + Infinion_P.Bias1_Bias;
-    rtb_Abs1 = Infinion_P.Constant_Value_o;
+    rtb_Sum_f_idx_0 = ((rtb_sqrt + Infinion_P.Bias_Bias) * Infinion_P.Gain_Gain
+                       + Infinion_P.Bias1_Bias) * rtb_Switch;
+    rtb_Switch = Infinion_P.Constant_Value_o;
   } else {
-    rtb_Abs1 = Infinion_P.Constant1_Value_d;
+    rtb_Switch = Infinion_P.Constant1_Value_d;
   }
 
   /* End of Switch: '<S105>/Switch' */
@@ -4011,7 +4013,7 @@ void InfinionModelClass::step()
   rtb_Sum_f_idx_0 = ((Infinion_X.xeyeze_CSTATE[0] * Infinion_B.SinCos_o1 +
                       Infinion_X.xeyeze_CSTATE[1] * Infinion_B.SinCos_o2) *
                      Infinion_B.TrigonometricFunction2 * 57.295779513082323 +
-                     Infinion_B.Switch_i) + rtb_Abs1;
+                     Infinion_B.Switch_i) + rtb_Switch;
 
   /* Switch: '<S106>/Switch' incorporates:
    *  Abs: '<S106>/Abs'
@@ -4032,7 +4034,7 @@ void InfinionModelClass::step()
   /* Sum: '<Root>/Sum1' incorporates:
    *  Constant: '<Root>/HNLLong'
    */
-  rtb_Abs1 = Infinion_P.HNLLong_Value + rtb_Sum_f_idx_0;
+  rtb_Switch = Infinion_P.HNLLong_Value + rtb_Sum_f_idx_0;
 
   /* Gain: '<S6>/1//2rhoV^2' incorporates:
    *  Constant: '<Root>/Constant2'
@@ -4115,7 +4117,7 @@ void InfinionModelClass::step()
   bpIndex_0[3] = rtb_idxm;
   if (rtmIsMajorTimeStep((&Infinion_M))) {
     /* MATLAB Function: '<Root>/Read Elevator' */
-    Infinion_readfile_n(s);
+    Infinion_readfile_o(s);
     latestData = Infinion_lastStr2double(s);
 
     /* PreLookup: '<S2>/(delta)' incorporates:
@@ -4821,7 +4823,7 @@ void InfinionModelClass::step()
 
   if (rtmIsMajorTimeStep((&Infinion_M))) {
     /* MATLAB Function: '<Root>/Read Throttle' */
-    Infinion_readfile_e(s);
+    Infinion_readfile_c(s);
     latestData = Infinion_lastStr2double(s);
 
     /* MATLAB Function: '<Root>/propulsion' incorporates:
@@ -4900,16 +4902,17 @@ void InfinionModelClass::step()
   }
 
   /* MATLAB Function: '<Root>/compute track' */
-  rtb_phidot = rt_atan2d_snf(Infinion_B.Product[1], Infinion_B.Product[0]);
-  if (rtb_phidot < 0.0) {
-    rtb_phidot += 6.2831853071795862;
+  rtb_Sum_f_idx_0 = rt_atan2d_snf(Infinion_B.Product[1], Infinion_B.Product[0]);
+  rtb_phidot = -rtb_Sum_f_idx_0;
+  if (-rtb_Sum_f_idx_0 < 0.0) {
+    rtb_phidot = -rtb_Sum_f_idx_0 + 6.2831853071795862;
   }
 
   /* SignalConversion generated from: '<S14>/ SFunction ' incorporates:
    *  MATLAB Function: '<Root>/WriteToFile'
    */
   frac_8[0] = rtb_sqrt;
-  frac_8[1] = rtb_Abs1;
+  frac_8[1] = rtb_Switch;
 
   /* MATLAB Function: '<Root>/WriteToFile' incorporates:
    *  Concatenate: '<S28>/Vector Concatenate'
@@ -4928,29 +4931,29 @@ void InfinionModelClass::step()
       0.0 + VectorConcatenate_j[i] * 0.0);
   }
 
-  rtb_sqrt = Infinion_fileManager_n();
-  rtb_Sum_f_idx_0 = Infinion_fileManager_nv();
-  rtb_Abs1 = Infinion_fileManager_nvg();
-  rtb_UnitConversion_a = Infinion_fileManager_nvg1();
-  rtb_jxi_h = Infinion_fileManager_nvg1z();
-  rtb_referencearea = Infinion_fileManager_nvg1zl();
-  latestData = Infinion_fileManager_nvg1zlk();
-  rtb_jxi = Infinion_fileManager_nvg1zlk2();
-  rtb_ixk = Infinion_fileManager_nvg1zlk2m();
-  rollFile = Infinion_fileManager_nvg1zlk2mj();
-  pitchFile = Infinio_fileManager_nvg1zlk2mjw();
-  yawFile = Infini_fileManager_nvg1zlk2mjw5();
-  rollRateFile = Infin_fileManager_nvg1zlk2mjw5f();
-  pitchRateFile = Infi_fileManager_nvg1zlk2mjw5fc();
-  yawRateFile = Inf_fileManager_nvg1zlk2mjw5fch();
-  accXFile = Inf_fileManager_k();
-  accYFile = Inf_fileManager_e();
-  accZFile = Inf_fileManager_f();
-  gyrXFile = Inf_fileManager_o();
-  gyrYFile = Inf_fileManager_oy();
-  gyrZFile = Inf_fileManager_p();
+  rtb_sqrt = Infinion_fileManager_a();
+  rtb_Switch = Infinion_fileManager_am();
+  rtb_Sum_f_idx_0 = Infinion_fileManager_amm();
+  rtb_UnitConversion_a = Infinion_fileManager_ammc();
+  rtb_jxi_h = Infinion_fileManager_ammcx();
+  rtb_referencearea = Infinion_fileManager_ammcxi();
+  latestData = Infinion_fileManager_ammcxic();
+  rtb_jxi = Infinion_fileManager_ammcxic4();
+  rtb_ixk = Infinion_fileManager_ammcxic4h();
+  rollFile = Infinion_fileManager_ammcxic4hu();
+  pitchFile = Infinio_fileManager_ammcxic4hub();
+  yawFile = Infini_fileManager_ammcxic4hubq();
+  rollRateFile = Infin_fileManager_ammcxic4hubq4();
+  pitchRateFile = Infi_fileManager_ammcxic4hubq4o();
+  yawRateFile = Inf_fileManager_ammcxic4hubq4oy();
+  accXFile = Inf_fileManager_a();
+  accYFile = Inf_fileManager_o();
+  accZFile = Inf_fileManager_j();
+  gyrXFile = Inf_fileManager_m();
+  gyrYFile = Inf_fileManager_b();
+  gyrZFile = Inf_fileManager_f();
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_sqrt, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_sqrt, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Airspeed_tmp);
     if (rtb_Compare_f) {
@@ -4959,7 +4962,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_Sum_f_idx_0, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_Switch, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Gain);
     if (rtb_Compare_f) {
@@ -4968,7 +4971,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_Abs1, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_Sum_f_idx_0, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", rtb_phidot);
     if (rtb_Compare_f) {
@@ -4977,7 +4980,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_UnitConversion_a, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_UnitConversion_a, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_B.Product[0]);
     if (rtb_Compare_f) {
@@ -4986,7 +4989,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_jxi_h, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_jxi_h, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_B.Product[1]);
     if (rtb_Compare_f) {
@@ -4995,7 +4998,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_referencearea, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_referencearea, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_B.Product[2]);
     if (rtb_Compare_f) {
@@ -5004,7 +5007,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(latestData, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(latestData, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", frac_8[0]);
     if (rtb_Compare_f) {
@@ -5013,7 +5016,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_jxi, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_jxi, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", frac_8[1]);
     if (rtb_Compare_f) {
@@ -5022,7 +5025,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rtb_ixk, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rtb_ixk, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_P.Gain3_Gain *
             (-Infinion_X.xeyeze_CSTATE[2] - Infinion_P.Constant_Value_m));
@@ -5032,7 +5035,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rollFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rollFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_X.phithetapsi_CSTATE[0]);
     if (rtb_Compare_f) {
@@ -5041,7 +5044,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(pitchFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(pitchFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_X.phithetapsi_CSTATE[1]);
     if (rtb_Compare_f) {
@@ -5050,7 +5053,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(yawFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(yawFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_X.phithetapsi_CSTATE[2]);
     if (rtb_Compare_f) {
@@ -5059,7 +5062,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(rollRateFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(rollRateFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_B.Product2[0]);
     if (rtb_Compare_f) {
@@ -5068,7 +5071,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(pitchRateFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(pitchRateFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_B.Product2[1]);
     if (rtb_Compare_f) {
@@ -5077,7 +5080,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(yawRateFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(yawRateFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_B.Product2[2]);
     if (rtb_Compare_f) {
@@ -5086,7 +5089,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(accXFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(accXFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", frac_9[0] + Infinion_B.Sum[0]);
     if (rtb_Compare_f) {
@@ -5095,7 +5098,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(accYFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(accYFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", frac_9[1] + Infinion_B.Sum[1]);
     if (rtb_Compare_f) {
@@ -5104,7 +5107,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(accZFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(accZFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", frac_9[2] + Infinion_B.Sum[2]);
     if (rtb_Compare_f) {
@@ -5113,7 +5116,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(gyrXFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(gyrXFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_X.pqr_CSTATE[0]);
     if (rtb_Compare_f) {
@@ -5122,7 +5125,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(gyrYFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(gyrYFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_X.pqr_CSTATE[1]);
     if (rtb_Compare_f) {
@@ -5131,7 +5134,7 @@ void InfinionModelClass::step()
   }
 
   b_NULL = NULL;
-  Inf_fileManager_n(gyrZFile, &filestar, &rtb_Compare_f);
+  Inf_fileManager_l(gyrZFile, &filestar, &rtb_Compare_f);
   if (!(filestar == b_NULL)) {
     fprintf(filestar, "%f\n", Infinion_X.pqr_CSTATE[2]);
     if (rtb_Compare_f) {
@@ -5139,7 +5142,7 @@ void InfinionModelClass::step()
     }
   }
 
-  Inf_fileManager_el();
+  Inf_fileManager_bl();
 
   /* Fcn: '<S27>/phidot' incorporates:
    *  Fcn: '<S27>/psidot'
@@ -5335,7 +5338,7 @@ void InfinionModelClass::initialize()
     /* SystemInitialize for MATLAB Function: '<Root>/Read Elevator' */
     a = NULL;
     for (i = 0; i < 20; i++) {
-      Infinion_DW.eml_openfiles_m[i] = a;
+      Infinion_DW.eml_openfiles_h[i] = a;
     }
 
     /* End of SystemInitialize for MATLAB Function: '<Root>/Read Elevator' */
@@ -5343,7 +5346,7 @@ void InfinionModelClass::initialize()
     /* SystemInitialize for MATLAB Function: '<Root>/Read Rudder' */
     a = NULL;
     for (i = 0; i < 20; i++) {
-      Infinion_DW.eml_openfiles_o[i] = a;
+      Infinion_DW.eml_openfiles_j[i] = a;
     }
 
     /* End of SystemInitialize for MATLAB Function: '<Root>/Read Rudder' */
@@ -5351,7 +5354,7 @@ void InfinionModelClass::initialize()
     /* SystemInitialize for MATLAB Function: '<Root>/Read Throttle' */
     a = NULL;
     for (i = 0; i < 20; i++) {
-      Infinion_DW.eml_openfiles_h[i] = a;
+      Infinion_DW.eml_openfiles_p[i] = a;
     }
 
     /* End of SystemInitialize for MATLAB Function: '<Root>/Read Throttle' */
@@ -5359,7 +5362,7 @@ void InfinionModelClass::initialize()
     /* SystemInitialize for MATLAB Function: '<Root>/WriteToFile' */
     a = NULL;
     for (i = 0; i < 20; i++) {
-      Infinion_DW.eml_openfiles_i[i] = a;
+      Infinion_DW.eml_openfiles_b[i] = a;
     }
 
     /* End of SystemInitialize for MATLAB Function: '<Root>/WriteToFile' */

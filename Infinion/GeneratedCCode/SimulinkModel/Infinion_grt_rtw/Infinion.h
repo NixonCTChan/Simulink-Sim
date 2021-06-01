@@ -7,9 +7,9 @@
  *
  * Code generation for model "Infinion".
  *
- * Model version              : 3.11
+ * Model version              : 1.5
  * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Thu Apr 29 17:54:18 2021
+ * C++ source code generated on : Sun May 23 18:54:51 2021
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -199,10 +199,10 @@ struct DW_Infinion_T {
   int32_T altitude_DWORK1_p;           /* '<Root>/(altitude)' */
   boolean_T eml_autoflush[20];         /* '<Root>/WriteToFile' */
   FILE * eml_openfiles[20];            /* '<Root>/Read Aileron' */
-  FILE * eml_openfiles_m[20];          /* '<Root>/Read Elevator' */
-  FILE * eml_openfiles_o[20];          /* '<Root>/Read Rudder' */
-  FILE * eml_openfiles_h[20];          /* '<Root>/Read Throttle' */
-  FILE * eml_openfiles_i[20];          /* '<Root>/WriteToFile' */
+  FILE * eml_openfiles_h[20];          /* '<Root>/Read Elevator' */
+  FILE * eml_openfiles_j[20];          /* '<Root>/Read Rudder' */
+  FILE * eml_openfiles_p[20];          /* '<Root>/Read Throttle' */
+  FILE * eml_openfiles_b[20];          /* '<Root>/WriteToFile' */
 };
 
 /* Continuous states (default storage) */
@@ -685,10 +685,10 @@ class InfinionModelClass {
   int8_T Infinion_filedata(void);
   int8_T Infinion_cfopen(const char_T *cfilename, const char_T *cpermission);
   real_T Infinion_fileManager(void);
-  FILE * Infinion_fileManager_b(real_T varargin_1);
+  FILE * Infinion_fileManager_m(real_T varargin_1);
   void Infinion_fseek(real_T fileID);
   real_T Infinion_ftell(real_T fileID);
-  void Infinion_fseek_m(real_T fileID);
+  void Infinion_fseek_b(real_T fileID);
   void Infinion_emxInit_real_T(emxArray_real_T_Infinion_T **pEmxArray, int32_T
     numDimensions);
   void Infinion_emxInit_uint8_T(emxArray_uint8_T_Infinion_T **pEmxArray, int32_T
@@ -726,7 +726,7 @@ class InfinionModelClass {
     numDimensions);
   void Infin_emxEnsureCapacity_real_T1(emxArray_real_T_Infinion_T *emxArray,
     int32_T oldNumel);
-  void Infinion_char_b(const emxArray_real_T_Infinion_T *varargin_1,
+  void Infinion_char_j(const emxArray_real_T_Infinion_T *varargin_1,
                        emxArray_char_T_Infinion_T *y);
   int32_T Infinion_skipspaces(const emxArray_char_T_Infinion_T *s, int32_T n);
   void Infinion_copysign(emxArray_char_T_Infinion_T *s1, int32_T *idx, const
@@ -741,7 +741,7 @@ class InfinionModelClass {
     allowpoint);
   boolean_T Infinion_copyexponent(emxArray_char_T_Infinion_T *s1, int32_T *idx,
     const emxArray_char_T_Infinion_T *s, int32_T *k, int32_T n);
-  void Infinion_skipspaces_k(const emxArray_char_T_Infinion_T *s, int32_T *k,
+  void Infinion_skipspaces_d(const emxArray_char_T_Infinion_T *s, int32_T *k,
     int32_T n);
   void Infinion_readfloat(emxArray_char_T_Infinion_T *s1, int32_T *idx, const
     emxArray_char_T_Infinion_T *s, int32_T *k, int32_T n, boolean_T allowimag,
@@ -750,64 +750,64 @@ class InfinionModelClass {
   void Infinion_emxFree_char_T(emxArray_char_T_Infinion_T **pEmxArray);
   creal_T Infinion_str2double(const emxArray_char_T_Infinion_T *s);
   real_T Infinion_lastStr2double(const emxArray_char_T_Infinion_T *str);
-  int8_T Infinion_filedata_d(void);
+  int8_T Infinion_filedata_j(void);
   int8_T Infinion_cfopen_l(const char_T *cfilename, const char_T *cpermission);
-  real_T Infinion_fileManager_bt(void);
-  FILE * Infinion_fileManager_btz(real_T varargin_1);
-  void Infinion_fseek_o(real_T fileID);
-  real_T Infinion_ftell_f(real_T fileID);
-  void Infinion_fseek_ox(real_T fileID);
-  void Infinion_fread_e(real_T fileID, int32_T sizeA, emxArray_real_T_Infinion_T
-                        *A, real_T *count);
-  int32_T Infinion_cfclose_k(real_T fid);
-  void Infinion_readfile_n(emxArray_char_T_Infinion_T *y);
-  int8_T Infinion_filedata_c(void);
-  int8_T Infinion_cfopen_b(const char_T *cfilename, const char_T *cpermission);
-  real_T Infinion_fileManager_p(void);
-  FILE * Infinion_fileManager_pw(real_T varargin_1);
-  void Infinion_fseek_k(real_T fileID);
-  real_T Infinion_ftell_i(real_T fileID);
-  void Infinion_fseek_kz(real_T fileID);
-  void Infinion_fread_g(real_T fileID, int32_T sizeA, emxArray_real_T_Infinion_T
+  real_T Infinion_fileManager_e(void);
+  FILE * Infinion_fileManager_eh(real_T varargin_1);
+  void Infinion_fseek_g(real_T fileID);
+  real_T Infinion_ftell_m(real_T fileID);
+  void Infinion_fseek_g1(real_T fileID);
+  void Infinion_fread_c(real_T fileID, int32_T sizeA, emxArray_real_T_Infinion_T
                         *A, real_T *count);
   int32_T Infinion_cfclose_h(real_T fid);
-  void Infinion_readfile_a(emxArray_char_T_Infinion_T *y);
-  int8_T Infinion_filedata_k(void);
-  int8_T Infinion_cfopen_k(const char_T *cfilename, const char_T *cpermission);
-  real_T Infinion_fileManager_e(void);
-  FILE * Infinion_fileManager_e4(real_T varargin_1);
-  void Infinion_fseek_c(real_T fileID);
-  real_T Infinion_ftell_b(real_T fileID);
-  void Infinion_fseek_cn(real_T fileID);
-  void Infinion_fread_j(real_T fileID, int32_T sizeA, emxArray_real_T_Infinion_T
+  void Infinion_readfile_o(emxArray_char_T_Infinion_T *y);
+  int8_T Infinion_filedata_p(void);
+  int8_T Infinion_cfopen_b(const char_T *cfilename, const char_T *cpermission);
+  real_T Infinion_fileManager_l(void);
+  FILE * Infinion_fileManager_lt(real_T varargin_1);
+  void Infinion_fseek_n(real_T fileID);
+  real_T Infinion_ftell_e(real_T fileID);
+  void Infinion_fseek_nn(real_T fileID);
+  void Infinion_fread_l(real_T fileID, int32_T sizeA, emxArray_real_T_Infinion_T
                         *A, real_T *count);
-  int32_T Infinion_cfclose_i(real_T fid);
-  void Infinion_readfile_e(emxArray_char_T_Infinion_T *y);
-  int8_T Infinion_filedata_m(void);
-  int8_T Infinion_cfopen_n(const char_T *cfilename, const char_T *cpermission);
-  real_T Infinion_fileManager_n(void);
-  real_T Infinion_fileManager_nv(void);
-  real_T Infinion_fileManager_nvg(void);
-  real_T Infinion_fileManager_nvg1(void);
-  real_T Infinion_fileManager_nvg1z(void);
-  real_T Infinion_fileManager_nvg1zl(void);
-  real_T Infinion_fileManager_nvg1zlk(void);
-  real_T Infinion_fileManager_nvg1zlk2(void);
-  real_T Infinion_fileManager_nvg1zlk2m(void);
-  real_T Infinion_fileManager_nvg1zlk2mj(void);
-  real_T Infinio_fileManager_nvg1zlk2mjw(void);
-  real_T Infini_fileManager_nvg1zlk2mjw5(void);
-  real_T Infin_fileManager_nvg1zlk2mjw5f(void);
-  real_T Infi_fileManager_nvg1zlk2mjw5fc(void);
-  real_T Inf_fileManager_nvg1zlk2mjw5fch(void);
-  real_T Inf_fileManager_k(void);
-  real_T Inf_fileManager_e(void);
-  real_T Inf_fileManager_f(void);
+  int32_T Infinion_cfclose_g(real_T fid);
+  void Infinion_readfile_a(emxArray_char_T_Infinion_T *y);
+  int8_T Infinion_filedata_d(void);
+  int8_T Infinion_cfopen_l0(const char_T *cfilename, const char_T *cpermission);
+  real_T Infinion_fileManager_i(void);
+  FILE * Infinion_fileManager_iw(real_T varargin_1);
+  void Infinion_fseek_i(real_T fileID);
+  real_T Infinion_ftell_c(real_T fileID);
+  void Infinion_fseek_i2(real_T fileID);
+  void Infinion_fread_e(real_T fileID, int32_T sizeA, emxArray_real_T_Infinion_T
+                        *A, real_T *count);
+  int32_T Infinion_cfclose_e(real_T fid);
+  void Infinion_readfile_c(emxArray_char_T_Infinion_T *y);
+  int8_T Infinion_filedata_l(void);
+  int8_T Infinion_cfopen_o(const char_T *cfilename, const char_T *cpermission);
+  real_T Infinion_fileManager_a(void);
+  real_T Infinion_fileManager_am(void);
+  real_T Infinion_fileManager_amm(void);
+  real_T Infinion_fileManager_ammc(void);
+  real_T Infinion_fileManager_ammcx(void);
+  real_T Infinion_fileManager_ammcxi(void);
+  real_T Infinion_fileManager_ammcxic(void);
+  real_T Infinion_fileManager_ammcxic4(void);
+  real_T Infinion_fileManager_ammcxic4h(void);
+  real_T Infinion_fileManager_ammcxic4hu(void);
+  real_T Infinio_fileManager_ammcxic4hub(void);
+  real_T Infini_fileManager_ammcxic4hubq(void);
+  real_T Infin_fileManager_ammcxic4hubq4(void);
+  real_T Infi_fileManager_ammcxic4hubq4o(void);
+  real_T Inf_fileManager_ammcxic4hubq4oy(void);
+  real_T Inf_fileManager_a(void);
   real_T Inf_fileManager_o(void);
-  real_T Inf_fileManager_oy(void);
-  real_T Inf_fileManager_p(void);
-  void Inf_fileManager_n(real_T varargin_1, FILE * *f, boolean_T *a);
-  int32_T Inf_fileManager_el(void);
+  real_T Inf_fileManager_j(void);
+  real_T Inf_fileManager_m(void);
+  real_T Inf_fileManager_b(void);
+  real_T Inf_fileManager_f(void);
+  void Inf_fileManager_l(real_T varargin_1, FILE * *f, boolean_T *a);
+  int32_T Inf_fileManager_bl(void);
 
   /* Continuous states update member function*/
   void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si );
